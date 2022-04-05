@@ -44,7 +44,7 @@ public class OperationsWithFilesTest {
         ZipFile zipFile = new ZipFile("src/test/resources/files/Sample.zip");
         ZipEntry zipCsvEntry = zipFile.getEntry("broadcast_network_1648982735535.csv");
         try (InputStream inputStream = zipFile.getInputStream(zipCsvEntry);
-        CSVReader reader = new CSVReader(new InputStreamReader(inputStream))) {
+             CSVReader reader = new CSVReader(new InputStreamReader(inputStream))) {
             List<String[]> content = reader.readAll();
             assertThat(content.get(0)).contains(
                     "Market",
@@ -63,12 +63,12 @@ public class OperationsWithFilesTest {
 
     @Test
     void jsonTypeTest() throws Exception {
-    ObjectMapper mapper = new ObjectMapper ();
-    File file = new File("src/test/resources/files/example.json");
-    SuperHeroSquad shs = mapper.readValue(file,SuperHeroSquad.class);
-    assertThat(shs.squadName).contains("Super hero squad");
-    assertThat(shs.homeTown).contains("Metro City");
-    assertThat(shs.formed).contains("2016");
-    assertThat(shs.secretBase).contains("Super tower");
-}
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File("src/test/resources/files/example.json");
+        SuperHeroSquad shs = mapper.readValue(file, SuperHeroSquad.class);
+        assertThat(shs.squadName).contains("Super hero squad");
+        assertThat(shs.homeTown).contains("Metro City");
+        assertThat(shs.formed).contains("2016");
+        assertThat(shs.secretBase).contains("Super tower");
+    }
 }
